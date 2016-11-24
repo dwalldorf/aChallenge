@@ -66,4 +66,4 @@ Customer with `{customerId}` must exist.
     }
 
 ## Test it
-Execute test by running `mvn verify`.
+Execute tests by running `mvn verify`.
