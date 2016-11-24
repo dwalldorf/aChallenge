@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -20,7 +21,7 @@ public class Appointment {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = Customer.ID_NAME)
     @NotNull
     private Customer customer;
 
@@ -29,6 +30,7 @@ public class Appointment {
     private LocalDateTime date;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @PrimaryKeyJoinColumn
     private AppointmentRating rating;
 
     public Integer getId() {
