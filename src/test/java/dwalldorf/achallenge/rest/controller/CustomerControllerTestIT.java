@@ -11,7 +11,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dwalldorf.achallenge.Application;
 import dwalldorf.achallenge.model.Customer;
-import org.apache.catalina.filters.CorsFilter;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,9 +36,7 @@ public class CustomerControllerTestIT {
 
     @Before
     public void setUp() throws Exception {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx)
-                                      .addFilter(new CorsFilter())
-                                      .build();
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
     }
 
     @Test

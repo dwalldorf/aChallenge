@@ -7,8 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -18,8 +19,8 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @OneToOne
-    @PrimaryKeyJoinColumn
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
     @NotNull
     private Customer customer;
 
@@ -28,7 +29,6 @@ public class Appointment {
     private LocalDateTime date;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    @PrimaryKeyJoinColumn
     private AppointmentRating rating;
 
     public Integer getId() {

@@ -1,15 +1,15 @@
 # audibene challenge
 
 ## Description
-This tool is written in Java8, using the spring-boot-parent package.
+This application is written in Java8, using the spring-boot-parent package.
 
-javax.inject is used to benefit from spring-boot's autowiring while staying compliant to javax standards.
+javax.inject is used to benefit from spring-boot's autowiring features while staying compliant to javax standards.
 
 #### API
-spring-boot-starter-web package is used to provide a REST-like HTTP api.
+spring-boot-starter-web package is used to provide a RESTful HTTP api.
 
 #### Persistence
-`javax.persistence.persistence-api` and `spring-boot-starter-data-jpa` are used. Data is stored in a file based h2db.
+`hibernate` and `spring-boot-starter-data-jpa` are used. Data is stored in a file based h2db.
 
 #### Trade-offs and simplifications
 Models of persisted entities contain only the minimum set of properties to make the application runnable and meaningful to use.
@@ -19,13 +19,14 @@ would technically be possible but lead to confusion. The model would have to be 
 
 Routes like `/appointments/next_week` break the rules of RESTful APIs but very much simplify the usage in this case.
 
-The API communicates with db models to the outside world. A production-ready application would probably separate the
-two worlds by communicating with data transfer objects that hide private or unnecessary data.
+The API communicates with database models to the outside world. A production-ready application would probably separate
+internal and external data representations to hide private or unnecessary data or provide additional information.
 
 There is only one unit- and one API integration-test to demonstrate testing approach.
 
 ## Use it
-Run the application via `mvn spring-boot:run`. You can now access the REST API at [localhost:8080](http://localhost:8080).
+Run the application via `mvn spring-boot:run` from the project root.
+You can access the API at [localhost:8080](http://localhost:8080).
 
 #### Customer interfaces
 * `POST /customers` - create a new customer
